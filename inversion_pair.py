@@ -17,49 +17,64 @@
      输出样例：
      2
 """
+import sys
+
+INF = float('inf')
+pair_num = 0    #逆序对数
 
 
-class Solution(object):
+def mergesort(arr):
     """
-        "Alg Class"
+        归并排序
     """
-    pairNum = 0
+    if len(arr) < 2:
+        return arr[:]
+    else:
+        middle = len(arr)/2
+        left = mergesort(arr[:middle])
+        right = mergesort(arr[middle:])
+        result = merge(left, right)
+        return result
 
-    def search(self, arr, left, right):
-        """
-            找逆序对
-        """
-        if left < right:
-            middle = (left+right)/2
-            self.search(arr, left, middle)
-            self.search(arr, middle+1, right)
-            self.merge(left, middle, right, arr)
+def merge(left, right):
+    """
+        归并数组
+    """
+    result = []
+    i, j = 0, 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            global pair_num
+            #排序之后left后面肯定比前面大，计数的时候需要把后面的数也算上去
+            #比如135246中,(3,2)逆序则(5,2)也逆序
+            pair_num += len(left) - i
+            result.append(right[j])
+            j += 1
 
-    def merge(self, left, middle, right, arr):
-        """
-            合并数组
-        """
-        left_arr_length = middle-left
-        right_arr_length = right-middle
-        left_arr = [arr[i] for i in range(left_arr_length+1)]
-        right_arr = [arr[middle+i+1] for i in range(right_arr_length)]
-        left_arr.append(2000)
-        right_arr.append(2000)
-        i, j, k = 0, 0, left
-        while k < right:
-            if left_arr[i] < right_arr[j]:
-                i += 1
-            else:
-                Solution.pairNum += 1
-                j += 1
-            k += 1
+
+    #i, j是在外部定义的，也就是说i，j位置之后的数值是正确顺序排列的
+    while i < len(left):
+        result.append(left[i])
+        i += 1
+
+    while j < len(right):
+        result.append(right[j])
+        j += 1
+
+    #其结果作为局部返回
+    return result
 
 if __name__ == '__main__':
-    num = int(raw_input())
-    nums = raw_input()
-    arr = [int(x) for x in nums.split(' ')]
-    i = 0
+    arr = list()
 
-    test = Solution()
-    test.search(arr, 0, num-1)
-    print Solution.pairNum
+    while True:
+        line = sys.stdin.readline()
+        if not line:
+            break
+        arr.append(int(line))
+
+    print mergesort(arr)
+    print pair_num
