@@ -1,55 +1,65 @@
-#!/usr/bin/env python
-# encoding: utf-8
+#!/usr/bin/env python # encoding: utf-8
 
 """
-    图算法
+求最小分割
 """
-class Graph(object):
+
+import sys
+import random
+
+class Adj(object):
     """
-        无权无向图
+        一个（或多个顶点合一）邻接边
     """
-    def __init__(self, v_num):
-        self.index = 0      #迭代器
-        self.edge_num = 0   #边数
-        self.v_set = list([None]*v_num)     #结点集合
-        for i in range(v_num):
-            self.v_set[i] = set()
+    def __init__(self, vertices, edge):
+        self.vertices = vertices
+        self.edge = edge
 
-    def add_edge(self, v_node, w_node):
+    def contract(self, other):
         """
-            连接v,w的边
+            连接两个顶点
         """
-        self.v_set[v_node].add(w_node)
-        self.v_set[w_node].add(v_node)
-        self.edge_num += 1
+        #合并顶点
+        self.vertices += other.vertices
+        #加入两顶点不重合的边
+        self.edge = [i for i in self.edge + other.edge if i not in self.vertices]
 
-    def get_degree(self, v_node):
-        """
-            得到v结点的度数
-        """
-        degree = len(self.v_set[v_node])
-        return degree
+def cut(graph):
+    """
+        找寻切割边
+    """
+    if len(graph) == 2:
+        return graph
 
-    def __iter__(self):
-        return iter(self.v_set)
+    random_vertex = random.choice(graph)
+    random_edge = random.choice(random_vertex.edge)
+    #求出邻接结点
+    adj_vertex = [i for i in graph if random_edge in i.vertices][0]
+
+    random_vertex.contract(adj_vertex)
+
+    graph.remove(adj_vertex)
+
+    return cut(graph)
+
+def find_min_cut(graph):
+    # graph2 = graph[:]
+    cut_graph = cut(graph)
+    return len(cut_graph[0].edge)
 
 def main():
-    """
-        测试函数
-    """
-    graph = Graph(5)
-    graph.add_edge(0, 1)
-    graph.add_edge(0, 4)
-    graph.add_edge(1, 2)
-    graph.add_edge(1, 3)
-    graph.add_edge(1, 4)
-    graph.add_edge(2, 4)
-    graph.add_edge(3, 4)
-    for index, i in enumerate(graph):
-        print index,
-        for j in i:
-            print j,
-        print
+    graph = []
+    while True:
+        line = sys.stdin.readline()
+        if not line:
+            break
+        if line.strip():
+            vertices = [int(x) for x in line.split()]
+            head = vertices.pop(0)
+            graph.append(Adj([head], vertices))
+
+    print find_min_cut(graph)
+
 
 if __name__ == '__main__':
     main()
