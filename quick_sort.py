@@ -79,16 +79,17 @@ def main():
     """
         测试函数
     """
-    arr = list()
+    arr = [34, 2, 31, 1, 7, 43, 21, 90, 19]
 
-    while True:
-        line = sys.stdin.readline()
-        if not line:
-            break
-        arr.append(int(line))
+    # while True:
+    #     line = sys.stdin.readline()
+    #     if not line:
+    #         break
+    #     arr.append(int(line))
 
     quick_sort(arr, 0, len(arr)-1)
-    print compared_number
+    print arr
+    # print compared_number
 
 if __name__ == '__main__':
     main()
