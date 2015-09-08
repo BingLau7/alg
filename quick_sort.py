@@ -79,7 +79,7 @@ def main():
     """
         测试函数
     """
-    arr = [34, 2, 31, 1, 7, 43, 21, 90, 19]
+    arr = [2, 8, 7, 1, 3, 5, 6, 4]
 
     # while True:
     #     line = sys.stdin.readline()
