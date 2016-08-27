@@ -29,6 +29,38 @@ public class ReverseLinkedList {
         return q;
     }
 
+    public ListNode reverseList(ListNode head, int n, int m){
+        ListNode _head = head;
+        ListNode _tail = head;
+        for (int i = 0; i < n - 1; i++) {
+            _head = _head.next;
+        }
+        for (int i = 0; i < m - 1; i++) {
+            _tail = _tail.next;
+        }
+
+        ListNode head_t = _tail;
+        ListNode tail_t = null;
+        tail_t = _tail.next;
+        _tail.next = null;
+        head_t = reverseList(_head);
+        _head.next = head_t;
+        ListNode _t = head_t;
+        // while(_t != null) {
+        //     System.out.println("------" + _t.val + ", " + _head.val);
+        //     _t = _t.next;
+        // }
+        // _t.next = tail_t;
+        // _t.next = head_t;
+        return _t;
+        // _t.next = _head;
+        // while (_head.next != null){
+        //     _head = _head.next;
+        // }
+        // _head.next = _tail;
+        // return head;
+    }
+
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
@@ -41,7 +73,7 @@ public class ReverseLinkedList {
 
         ReverseLinkedList r = new ReverseLinkedList();
 
-        ListNode tt = r.reverseList(head);
+        ListNode tt = r.reverseList(head, 2, 4);
         while(tt != null) {
             System.out.print(tt.val + " -> ");
             tt = tt.next;
