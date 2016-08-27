@@ -6,8 +6,27 @@ class ListNode {
 }
 
 public class ReverseLinkedList {
+    int i = 1;
+    /**
+     **/
     public ListNode reverseList(ListNode head) {
-        return null;
+        if (head == null || head.next == null){
+            return head;
+        }
+        ListNode p = head;
+        ListNode q = head.next;
+        ListNode r = q.next;
+        ListNode t = null;
+        p.next = null;
+        while (r != null) {
+            t = q;
+            q.next = p;
+            p = t;
+            q = r;
+            r = q.next;
+        }
+        q.next = p;
+        return q;
     }
 
     public static void main(String[] args) {
@@ -20,7 +39,9 @@ public class ReverseLinkedList {
         t = t.next;
         t.next = new ListNode(5);
 
-        ListNode tt = head;
+        ReverseLinkedList r = new ReverseLinkedList();
+
+        ListNode tt = r.reverseList(head);
         while(tt != null) {
             System.out.print(tt.val + " -> ");
             tt = tt.next;
