@@ -13,4 +13,11 @@ public class ListTest {
         ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
         ListNode.print(head);
     }
+
+    @Test
+    public void testOddEventLinkedList(){
+        ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
+        new OddEvenLinkedList().oddEvenList(head);
+        ListNode.print(head);
+    }
 }
