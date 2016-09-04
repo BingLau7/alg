@@ -15,6 +15,14 @@ public class ListTest {
     }
 
     @Test
+    public void testRemove() {
+        ListNode head = ListNode.create(new int[]{1, 2, 3});
+        ListNode.print(head);
+        ListNode t = ListNode.remove(head, 3);
+        ListNode.print(t);
+    }
+
+    @Test
     public void testClone() throws CloneNotSupportedException{
         ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
         ListNode cHead = (ListNode)head.clone();

@@ -38,6 +38,20 @@ public class ListNode implements Cloneable{
         t.next = new ListNode(data);
     }
 
+    public static ListNode remove(ListNode head, int data) {
+        ListNode headInHead = new ListNode(0);
+        headInHead.next = head;
+        ListNode t = headInHead;
+        while (t.next != null) {
+            if (t.next.val == data) {
+                t.next = t.next.next;
+            } else {
+                t = t.next;
+            }
+        }
+        return headInHead.next;
+    }
+
     public static void print(ListNode head) {
         ListNode t = head;
         while (t != null) {
