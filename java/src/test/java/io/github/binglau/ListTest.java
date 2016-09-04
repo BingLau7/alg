@@ -31,7 +31,8 @@ public class ListTest {
 
     @Test
     public void testPalindromeLinkedList() {
-        ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
-        new PalindromeLinkedList().isPalindrome(head);
+        ListNode head = ListNode.create(new int[]{5, 4, 3, 4, 5});
+        boolean result = new PalindromeLinkedList().isPalindrome(head);
+        System.out.println(result);
     }
 }
