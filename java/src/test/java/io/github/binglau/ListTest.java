@@ -15,9 +15,23 @@ public class ListTest {
     }
 
     @Test
+    public void testClone() throws CloneNotSupportedException{
+        ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
+        ListNode cHead = (ListNode)head.clone();
+        ListNode.print(head);
+        ListNode.print(cHead);
+    }
+
+    @Test
     public void testOddEventLinkedList(){
         ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
         new OddEvenLinkedList().oddEvenList(head);
         ListNode.print(head);
+    }
+
+    @Test
+    public void testPalindromeLinkedList() {
+        ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
+        new PalindromeLinkedList().isPalindrome(head);
     }
 }

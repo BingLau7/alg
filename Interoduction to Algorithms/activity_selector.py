@@ -1,7 +1,9 @@
-#coding:utf-8
+# coding:utf-8
+
 """
     活动选择问题
 """
+
 
 def recursive_activity_selector(start, finish, set_k, scale):
     """
@@ -19,6 +21,7 @@ def recursive_activity_selector(start, finish, set_k, scale):
     else:
         return []
 
+
 def greedy_activity_selector(start, finish):
     """
         非递归实现
@@ -34,6 +37,7 @@ def greedy_activity_selector(start, finish):
             k = i
 
     return set_k
+
 
 def main():
     """
