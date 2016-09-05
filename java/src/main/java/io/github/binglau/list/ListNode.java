@@ -1,6 +1,4 @@
-package io.github.binglau;
-
-import java.util.List;
+package io.github.binglau.list;
 
 /**
  * 类ListNode.java的实现描述：TODO:类实现描述

@@ -1,4 +1,4 @@
-package io.github.binglau;
+package io.github.binglau.list;
 
 /**
  * 类ReverseList.java的实现描述：TODO:类实现描述

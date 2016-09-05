@@ -1,4 +1,4 @@
-package io.github.binglau;
+package io.github.binglau.list;
 
 import java.util.ArrayList;
 import java.util.List;
