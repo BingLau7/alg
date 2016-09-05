@@ -26,14 +26,6 @@ public class ListTest {
     }
 
     @Test
-    public void testClone() throws CloneNotSupportedException{
-        ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
-        ListNode cHead = (ListNode)head.clone();
-        ListNode.print(head);
-        ListNode.print(cHead);
-    }
-
-    @Test
     public void testOddEventLinkedList(){
         ListNode head = ListNode.create(new int[]{1, 2, 3, 4, 5});
         new OddEvenLinkedList().oddEvenList(head);
@@ -45,5 +37,28 @@ public class ListTest {
         ListNode head = ListNode.create(new int[]{5, 4, 3, 4, 5});
         boolean result = new PalindromeLinkedList().isPalindrome(head);
         System.out.println(result);
+    }
+
+    @Test
+    public void testIntersectionOfTwoLinkedList() {
+        ListNode aHead = ListNode.create(new int[]{1, 2});
+        ListNode bHead = ListNode.create(new int[]{3, 4, 5});
+        ListNode cHead = ListNode.create(new int[]{1, 2, 3, 4, 5});
+//        ListNode aT = aHead;
+//        ListNode bT = bHead;
+//        while (aT.next != null) {
+//            aT = aT.next;
+//        }
+//        while (bT != null) {
+//            if (bT.next == null) {
+//                break;
+//            }
+//            bT = bT.next;
+//        }
+//        aT.next= cHead;
+//        bT.next = cHead;
+//        System.out.println(aT.val);
+        ListNode.print(aHead);
+        ListNode.print(cHead);
     }
 }

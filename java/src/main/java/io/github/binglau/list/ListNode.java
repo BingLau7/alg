@@ -6,16 +6,16 @@ package io.github.binglau.list;
  * @author bingjian.lbj 2016-08-29 下午7:00
  */
 public class ListNode implements Cloneable{
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
+    public int val;
+    public ListNode next;
+    public ListNode(int x) { val = x; }
 
     public static ListNode create(int[] data) {
         if (data.length == 0){
             return null;
         }
         ListNode head = new ListNode(data[0]);
-        if (data.length == 2) {
+        if (data.length == 1) {
             return head;
         }
         for (int i = 1; i < data.length; i++) {
