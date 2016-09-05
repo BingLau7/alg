@@ -1,5 +1,6 @@
 package io.github.binglau;
 
+import io.github.binglau.list.IntersectionOfTowLinkedList;
 import io.github.binglau.list.ListNode;
 import io.github.binglau.list.OddEvenLinkedList;
 import io.github.binglau.list.PalindromeLinkedList;
@@ -43,22 +44,17 @@ public class ListTest {
     public void testIntersectionOfTwoLinkedList() {
         ListNode aHead = ListNode.create(new int[]{1, 2});
         ListNode bHead = ListNode.create(new int[]{3, 4, 5});
-        ListNode cHead = ListNode.create(new int[]{1, 2, 3, 4, 5});
-//        ListNode aT = aHead;
-//        ListNode bT = bHead;
-//        while (aT.next != null) {
-//            aT = aT.next;
-//        }
-//        while (bT != null) {
-//            if (bT.next == null) {
-//                break;
-//            }
-//            bT = bT.next;
-//        }
-//        aT.next= cHead;
-//        bT.next = cHead;
-//        System.out.println(aT.val);
+        ListNode cHead = ListNode.create(new int[]{7, 2, 3, 4, 5});
+        ListNode aT = aHead;
+        ListNode bT = bHead;
+        while (aT.next != null) aT = aT.next;
+        while (bT.next != null) bT = bT.next;
+        aT.next= cHead;
+        bT.next = cHead;
         ListNode.print(aHead);
-        ListNode.print(cHead);
+        ListNode.print(bHead);
+
+        ListNode r = new IntersectionOfTowLinkedList().getIntersectionNodeByHashSet(aHead, bHead);
+        System.out.println(r.val);
     }
 }
