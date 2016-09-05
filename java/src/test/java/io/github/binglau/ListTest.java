@@ -54,7 +54,8 @@ public class ListTest {
         ListNode.print(aHead);
         ListNode.print(bHead);
 
-        ListNode r = new IntersectionOfTowLinkedList().getIntersectionNodeByHashSet(aHead, bHead);
+//        ListNode r = new IntersectionOfTowLinkedList().getIntersectionNodeByHashSet(aHead, bHead);
+        ListNode r = new IntersectionOfTowLinkedList().getIntersectionNodeByDiffLen(aHead, bHead);
         System.out.println(r.val);
     }
 }
