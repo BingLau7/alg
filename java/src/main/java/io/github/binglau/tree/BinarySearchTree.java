@@ -5,18 +5,8 @@ package io.github.binglau.tree;
  *
  * @author bingjian.lbj 2016-09-08 下午9:41
  */
-class TreeNode {
-    int value;
-    TreeNode left;
-    TreeNode right;
-
-    public TreeNode(int value) {
-        this.value = value;
-    }
-}
-
 public class BinarySearchTree {
-    public static TreeNode root;
+    public TreeNode root;
 
     public TreeNode search(int key) {
         TreeNode current = root;

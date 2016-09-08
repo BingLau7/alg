@@ -1,6 +1,8 @@
 package io.github.binglau;
 
+import io.github.binglau.tree.BSTIterator;
 import io.github.binglau.tree.BinarySearchTree;
+import io.github.binglau.tree.TreeNode;
 import org.junit.Test;
 
 /**
@@ -9,8 +11,7 @@ import org.junit.Test;
  * @author bingjian.lbj 2016-09-08 下午10:44
  */
 public class TreeTest {
-    @Test
-    public void createBST() {
+    public TreeNode createBST() {
         BinarySearchTree BST = new BinarySearchTree();
         BST.insert(20);
         BST.insert(12);
@@ -21,6 +22,22 @@ public class TreeTest {
         BST.insert(14);
         BST.insert(16);
         BST.insert(13);
-        BST.print(BST.root);
+        return BST.root;
+    }
+
+    @Test
+    public void createTest() {
+        BinarySearchTree BST = new BinarySearchTree();
+        BST.print(createBST());
+    }
+
+    @Test
+    public void iteratorTest() {
+        BinarySearchTree BST = new BinarySearchTree();
+        TreeNode node = createBST();
+        BSTIterator bstIterator = new BSTIterator(node);
+        while (bstIterator.hasNext()) {
+            System.out.println(bstIterator.next());
+        }
     }
 }
