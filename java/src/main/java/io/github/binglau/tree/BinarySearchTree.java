@@ -46,7 +46,10 @@ public class BinarySearchTree {
                 }
             } else {
                 current = current.right;
-                if (current == null);
+                if (current == null) {
+                    parent.right = newNode;
+                    return newNode;
+                }
             }
         }
     }
@@ -121,9 +124,9 @@ public class BinarySearchTree {
     public void print(TreeNode root) {
         if (root != null) {
             print(root.left);
-            System.out.print("value = " + root.value);
+            System.out.print("value = " + root.value + " ");
             if (root.right != null) System.out.print(" -> ");
+            print(root.right);
         }
-        print(root.right);
     }
 }
