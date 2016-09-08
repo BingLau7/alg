@@ -88,9 +88,7 @@ public class BinarySearchTree {
             if (current == root) root = current.right;
             else if (isLeftChild) parent.left = current.right;
             else parent.right = current.right;
-        }
-
-        else if (current.left != null && current.right != null) {
+        } else {
             TreeNode successor = getDeleteSuccessor(current);
             if (current == root) root = successor;
             else if (isLeftChild) parent.left = successor;
