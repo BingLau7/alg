@@ -247,7 +247,7 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
         if (!isRed(h.left) && !isRed(h.left.left))
             h = moveRedLeft(h);
 
-        h.left = deleteMin(h.right);
+        h.left = deleteMin(h.left);
         return balance(h);
     }
 
