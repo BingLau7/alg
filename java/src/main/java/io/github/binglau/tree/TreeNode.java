@@ -13,5 +13,22 @@ public class TreeNode {
     public TreeNode(int value) {
         this.value = value;
     }
+
+    // 通过层序来建立树
+    // 返回根节点
+    public static TreeNode build(int[] array) {
+        return null;
+    }
+
+    // 通过树的根节点打印出树的结构
+    // 1
+    // 2(1-) 3(1+)
+    // 4(2-) 5(2+) 12(3-) 7(3+)
+    // 13(4-) 23(5-) 16(5+) 11(7-)
+    // 其中括号内的分别是根节点及他们是左子树(-)or右子树(+)
+    public static void printTree(TreeNode root) {
+
+    }
+
 }
 
