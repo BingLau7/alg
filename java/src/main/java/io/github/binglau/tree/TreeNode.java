@@ -8,12 +8,12 @@ import java.util.LinkedList;
  * @author bingjian.lbj 2016-09-08 下午11:17
  */
 public class TreeNode {
-    int value;
-    TreeNode left;
-    TreeNode right;
-    TreeNode parent;
-    boolean isLeft = true;
-    int size = 0;
+    public int value;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode parent;
+    public boolean isLeft = true;
+    public int size = 0;
 
     public TreeNode(int value) {
         this.value = value;
@@ -64,7 +64,7 @@ public class TreeNode {
         }
     }
 
-    private TreeNode add(int value) {
+    public TreeNode add(int value) {
         if (this.left == null) {
             TreeNode node = new TreeNode(value);
             this.left = node;
