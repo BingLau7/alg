@@ -1,7 +1,5 @@
 package io.github.binglau.tree;
 
-import apple.laf.JRSUIUtils;
-
 import java.util.LinkedList;
 
 /**
@@ -13,6 +11,8 @@ public class TreeNode {
     int value;
     TreeNode left;
     TreeNode right;
+    TreeNode parent;
+    boolean isLeft = true;
     int size = 0;
 
     public TreeNode(int value) {
@@ -32,21 +32,33 @@ public class TreeNode {
 
     // 通过树的根节点打印出树的结构
     // 1
-    // 2(1-) 3(1+)
-    // 4(2-) 5(2+) 12(3-) 7(3+)
-    // 13(4-) 23(5-) 16(5+) 11(7-)
+    // 2(1l) 3(1r)
+    // 4(2l) 5(2r) 12(3l) 7(3r)
+    // 13(4l) 23(5r) 16(5l) 11(7r)
     // 其中括号内的分别是根节点及他们是左子树(-)or右子树(+)
     public static void printTree(TreeNode root) {
         if (root == null) {
             System.out.println("the tree is empty");
             return;
         }
+        // 计数器，辅助计算是否要换行
+        int i = 0;
+        // 层数
+        int k = 1;
         // 使用队列实现 BSF
         java.util.Queue<TreeNode> queue = new LinkedList();
         queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            System.out.println(node.value);
+            String dirLabel = "r";
+            if (!node.isLeft) dirLabel = "r";
+            if (node.parent != null) System.out.print(node.value + "(" + node.parent.value + dirLabel + ") ");
+            else System.out.print(node.value + " ");
+            i++;
+            if (i == (Math.pow(2, k) - 1)) {
+                System.out.println();
+                k++;
+            }
             if (node.left != null) queue.add(node.left);
             if (node.right != null) queue.add(node.right);
         }
@@ -57,24 +69,27 @@ public class TreeNode {
             TreeNode node = new TreeNode(value);
             this.left = node;
             this.size++;
+            node.isLeft = true;
+            node.parent = this;
             return node;
         }
         else if (this.right == null){
             TreeNode node = new TreeNode(value);
             this.right = node;
             this.size++;
+            node.isLeft = false;
+            node.parent = this;
             return node;
         } else {
-            if (this.right.size < this.left.size) return this.right.add(value);
+            if (this.left.size < 2) return this.left.add(value);
+            else if (this.right.size < this.left.size) return this.right.add(value);
             else return this.left.add(value);
         }
     }
 
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4, 5, 6};
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         TreeNode root = build(array);
         printTree(root);
     }
-
 }
-
