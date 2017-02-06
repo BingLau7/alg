@@ -1,6 +1,5 @@
 package io.github.binglau.programming_pearls;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Random;
