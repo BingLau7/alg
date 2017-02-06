@@ -19,6 +19,20 @@ public class BitSort {
         }
     }
 
+    public static void bitSortWithIBit(int[] data, int max) {
+        IBit iBit = new IBit(max);
+        for (int i = 0; i < max; i++) {
+            iBit.clr(i);
+        }
+        for (int i = 0; i < data.length; i++) {
+            iBit.set(data[i]);
+        }
+        for (int i = 0; i < max; i++) {
+            if (iBit.test(i) != 0)
+                System.out.print(i + " ");
+        }
+    }
+
     public static void main(String[] args) {
         // 实验一个100以内的排序
         int max = 100;
@@ -29,5 +43,7 @@ public class BitSort {
         }
         System.out.println(Arrays.toString(data));
         bitSort(data, max);
+        System.out.println();
+        bitSortWithIBit(data, max);
     }
 }
