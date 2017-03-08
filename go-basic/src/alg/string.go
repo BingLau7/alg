@@ -1,46 +1,67 @@
 package alg
 
 import (
+	"errors"
 	"fmt"
+	"strconv"
+	"strings"
+	"utils"
 )
 
-type intHeap []int
-
-func Test() string {
-	return "test"
-}
-
-// 实现了heap.Interface中组合的sort.Interface接口的Push方法
-func (h *intHeap) Len() int {
-	return len(*h)
-}
-
-// 实现了heap.Interface的Pop方法
-func (h *intHeap) Pop() (v interface{}) {
-	*h, v = (*h)[:h.Len()-1], (*h)[h.Len()-1]
-	return
-}
-
-// 实现了heap.Interface的Push方法
-func (h *intHeap) Push(v interface{}) {
-	*h = append(*h, v.(int))
-}
-
-// 按层来遍历和打印堆数据，第一行只有一个元素，即堆顶元素
-func (h intHeap) printHeap() {
-	n := 1
-	levelCount := 1
-	for n <= h.Len() {
-		fmt.Println(h[n-1 : n-1+levelCount])
-		n += levelCount
-		levelCount *= 2
+func op(opA float64, opB float64, opC string) (result float64, err error) {
+	err = nil
+	switch opC {
+	case "+":
+		result = opA + opB
+	case "-":
+		result = opA - opB
+	case "/":
+		if opB == 0 {
+			result = 0
+			err = errors.New("被除数不能为0")
+		}
+		result = opA / opB
+	case "*":
+		result = opA * opB
+	default:
+		result = 0
+		err = errors.New("操作符不被识别")
 	}
+	return result, err
 }
 
-func EvaluateResversePolishNotation(ops []string) int {
-	nums := new(intHeap)
-	nums.Push(4)
-	nums.Push(3)
-	nums.printHeap()
-	return 0
+func EvaluateResversePolishNotation(ops []string) float64 {
+	operations := "+-*/"
+
+	stack := utils.NewStack()
+
+	for _, s := range ops {
+		if !strings.Contains(operations, s) {
+			if f, err := strconv.ParseFloat(s, 64); err == nil {
+				stack.Push(f)
+			} else {
+				fmt.Println("操作符不被识别")
+				return 0
+			}
+		} else {
+			f1, ok1 := stack.Pop().(float64)
+			f2, ok2 := stack.Pop().(float64)
+			if ok1 && ok2 {
+				r, err := op(f1, f2, s)
+				if err != nil {
+					fmt.Println(err)
+				}
+				stack.Push(r)
+			}
+		}
+	}
+
+	result, ok := stack.Pop().(float64)
+
+	if !ok {
+		fmt.Println("Error")
+		return 0
+	}
+
+	return result
 }
