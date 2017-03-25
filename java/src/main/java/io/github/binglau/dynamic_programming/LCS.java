@@ -1,5 +1,20 @@
 package io.github.binglau.dynamic_programming;
 
+/**
+ * 1. 刻画最长公共子序列的特征
+ * (LCS 的最优子结构) 令 X = <x1, x2, ..., xm> 和 Y = <y1, y2, ..., yn> 为两个序列，Z = <z1, z2, ..., zk> 为 X 和 Y 的任意 LCS
+ * ① 如果 x[m] = y[n], 则 z[k] = x[m] = y[n] 且 z[k-1] 是 x[m-1] 和 y[n-1] 的一个 LCS
+ * ② 如果 x[m] != y[n], 那么 z[k] != x[m] 意味着 Z 是 Y[m-1] 和 Y 的一个 LCS
+ * ③ 如果 x[m] = y[n]，那么 z[k] != y[n] 意味着 Z 是 X 和 Y[n-1] 的一个 LCS
+ *
+ * 2. 一个递归解
+ *             0                                若 i = 0 或 j = 0
+ * c[i, j] =   c[i - 1, j - 1] + 1              若 i,j > 0 且 x[i] = y[i]
+ *             max(c[i, j - 1], c[i - 1, j])    若 i,j > 0，且 x[i] != y[j]
+ *
+ * 3. 计算 LCS 长度 (memo 的结果)
+ * 4. 构造 LCS (backtrack 方法回溯)
+ */
 public class LCS {
 
     private static int longestCommonSubSequenceDP(String a, String b) {
