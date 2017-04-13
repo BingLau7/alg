@@ -6,7 +6,7 @@ package io.github.binglau.list;
  * @author bingjian.lbj 2016-09-04 下午6:26
  */
 public class ReverseList {
-    public ListNode reverseList(ListNode head) {
+    public static ListNode reverseList(ListNode head) {
         if (head == null || head.next == null){
             return head;
         }
@@ -24,5 +24,12 @@ public class ReverseList {
         }
         q.next = p;
         return q;
+    }
+
+    public static void main(String[] args) {
+        ListNode head = ListNode.create(new int[]{1, 2, 4, 12, 33});
+        ListNode.print(head);
+        ListNode rhead = reverseList(head);
+        ListNode.print(rhead);
     }
 }
