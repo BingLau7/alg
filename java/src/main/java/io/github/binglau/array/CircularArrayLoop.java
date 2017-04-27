@@ -46,9 +46,27 @@ public class CircularArrayLoop {
         for (int a : nums) {
             if (a == 0) return false;
         }
+//        // 网上的方法
+//        int len = nums.length;
+//        for (int i = 0; i < len; i++)
+//            if (checkCycle(nums, i)) return true;
+//        return false;
+
+        int index = 0;
         int len = nums.length;
-        for (int i = 0; i < len; i++)
-            if (checkCycle(nums, i)) return true;
+        boolean isExceedLen = false;
+
+        while (nums[index] != 0) {
+            int curr_num = nums[index];
+            nums[index] = 0;
+            index = index + curr_num;
+            if (index >= len) isExceedLen = true;
+
+            index = index % len;
+            if (index == 0 && isExceedLen) return true;
+            if (index < 0) index = len + index;
+        }
+
         return false;
     }
 
