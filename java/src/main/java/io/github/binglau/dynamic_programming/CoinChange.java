@@ -43,9 +43,26 @@ public class CoinChange {
         return mem[rem];
     }
 
+    private static int coinChangeIterative(int[] coins, int amount){
+        int[] mem = new int[amount + 1]; // mem[i] 表示 i 的和需要的最小次数
+        int sum = 0;
+        while (++sum <= amount) {
+            int min = -1;
+            for (int coin : coins) {
+                if (sum >= coin && mem[sum - coin] != -1) {
+                    int res = mem[sum - coin] + 1;
+                    if (min < 0) min = res;
+                    else min = res < min ? res : min;
+                }
+            }
+            mem[sum] = min;
+        }
+        return mem[amount];
+    }
+
     public static void main(String[] args) {
-        int[] coins = {1};
-        int amount = 0;
-        System.out.println(coinChange(coins, amount));
+        int[] coins = {1, 2, 5};
+        int amount = 11;
+        System.out.println(coinChangeIterative(coins, amount));
     }
 }
