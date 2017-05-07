@@ -15,7 +15,7 @@ import java.util.*;
  Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 
  */
-public class LetterCombaintions {
+public class LetterCombinations {
     private static String[] map = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
     public static List<String> letterCombinations(String digits) {
         LinkedList<String> result = new LinkedList<>();
