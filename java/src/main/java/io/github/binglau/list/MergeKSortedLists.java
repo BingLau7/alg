@@ -1,4 +1,4 @@
-package io.github.binglau.unkown;
+package io.github.binglau.list;
 
 import io.github.binglau.list.ListNode;
 
