@@ -13,10 +13,9 @@ public class ReverseList {
         ListNode p = head;
         ListNode q = head.next;
         ListNode r = q.next;
-        ListNode t = null;
         p.next = null;
         while (r != null) {
-            t = q;
+            ListNode t = q;
             q.next = p;
             p = t;
             q = r;
