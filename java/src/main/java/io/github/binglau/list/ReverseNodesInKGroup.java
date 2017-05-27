@@ -1,5 +1,8 @@
 package io.github.binglau.list;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 文件描述:
  * https://leetcode.com/problems/reverse-nodes-in-k-group/#/description
@@ -21,9 +24,9 @@ package io.github.binglau.list;
  */
 
 public class ReverseNodesInKGroup {
-    public static ListNode reverseKGroup(ListNode head, int k) {
-        if (k <= 1) return head;
-        if (head == null || head.next == null) return head;
+    private static ListNode[] reverseKList(ListNode head, int k) {
+        if (k <= 1) return new ListNode[]{head, null};
+        if (head == null || head.next == null) return new ListNode[]{head, null};
 
         int listLen = 0;
         ListNode c = head;
@@ -31,7 +34,7 @@ public class ReverseNodesInKGroup {
             c = c.next;
             listLen++;
         }
-        if (k > listLen) return head;
+        if (k > listLen) return new ListNode[]{head, null};
 
         ListNode p = head;
         ListNode q = head.next;
@@ -52,18 +55,37 @@ public class ReverseNodesInKGroup {
         // 保存 k 次反转后面的链表
         ListNode tt = q.next;
         q.next = p;
-        ListNode cur = q;
-        // 在反转后的链表尾部插入未反转的链表
-        while (cur.next != null) {
-            cur = cur.next;
-        }
-        cur.next = tt;
+        return new ListNode[]{q, tt};
+    }
 
-        return q;
+    public static ListNode reverseKGroup(ListNode head, int k) {
+        if (k <= 1) return head;
+        if (head == null || head.next == null) return head;
+        List<ListNode> nodes = new ArrayList<>();
+        ListNode tmp = head;
+
+        while (true) {
+            ListNode[] listNodes = reverseKList(tmp, k);
+            if (listNodes[1] == null) {
+                nodes.add(listNodes[0]);
+                break;
+            }
+            nodes.add(listNodes[0]);
+            tmp = listNodes[1];
+        }
+
+        head = new ListNode(0);
+        tmp = head;
+        for (int i = 0; i < nodes.size(); i++) {
+            while (tmp.next != null) tmp = tmp.next;
+            tmp.next = nodes.get(i);
+        }
+
+        return head.next;
     }
 
     public static void main(String[] args) {
         ListNode head1 = ListNode.create(new int[]{1, 2, 3, 4, 5});
-        ListNode.print(reverseKGroup(head1,2));
+        ListNode.print(reverseKGroup(head1,1));
     }
 }
