@@ -21,6 +21,8 @@ import java.util.List;
  For k = 2, you should return: 2->1->4->3->5
 
  For k = 3, you should return: 3->2->1->4->5
+
+ 先反转部分(k)个链表，然后将链表head和k之后的链表返回，这样就对于k之后的链表进行重复操作然后将所有得到的head合并
  */
 
 public class ReverseNodesInKGroup {
