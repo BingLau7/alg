@@ -6,7 +6,6 @@ import com.google.common.graph.MutableGraph;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * 文件描述: 深度搜索算法
@@ -19,30 +18,6 @@ import java.util.Set;
 
  */
 
-class Node {
-    int value;
-    boolean isVisit;
-
-    public Node(int value) {
-        this.value = value;
-    }
-
-    public boolean isVisit() {
-        return isVisit;
-    }
-
-    public void setVisit(boolean visit) {
-        isVisit = visit;
-    }
-
-    @Override
-    public String toString() {
-        return "Node{" +
-                "value=" + value +
-                ", isVisit=" + isVisit +
-                '}';
-    }
-}
 
 public class DFS {
     private static Node initNode = new Node(1);
