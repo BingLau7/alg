@@ -1,9 +1,13 @@
 package io.github.binglau.dynamic_programming;
 
 /**
- * 类MaximumSubarray.java的实现描述：TODO:类实现描述
+ * https://leetcode.com/problems/maximum-subarray/#/description
  *
- * @author bingjian.lbj 2016-11-27 下午3:36
+ Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
+
+ For example, given the array [-2,1,-3,4,-1,2,1,-5,4],
+ the contiguous subarray [4,-1,2,1] has the largest sum = 6.
+
  */
 public class MaximumSubarray {
     public static int maxSubArray(int[] nums) {
@@ -17,7 +21,8 @@ public class MaximumSubarray {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, -2, 3, 10, -4, 7, 2, -5};
+//        int[] nums = {1, -2, 3, 10, -4, 7, 2, -5};
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         int result = maxSubArray(nums);
         System.out.println(result);
     }
