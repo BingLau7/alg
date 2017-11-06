@@ -3,6 +3,8 @@ package alg
 import "fmt"
 
 /**
+https://leetcode.com/problems/summary-ranges/
+
 Given a sorted integer array without duplicates, return the summary of its ranges.
 
 Example 1:
