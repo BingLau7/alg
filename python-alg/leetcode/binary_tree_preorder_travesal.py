@@ -28,4 +28,4 @@ if __name__ == '__main__':
     root = TreeNode(3)
     root.left = TreeNode(1)
     root.right = TreeNode(2)
-    print Solution().preorderTraversal(root)
+    print(Solution().preorderTraversal(root))

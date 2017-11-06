@@ -90,8 +90,8 @@ if __name__ == '__main__':
     # root.right.left = t1
     # root.right.right = TreeNode(9)
 
-    print Solution().isChildren(root.left, t2)
+    print(Solution().isChildren(root.left, t2))
 
     result = Solution().lowestCommonAncestor(root, t2, t6)
-    print result.val
+    print(result.val)
 

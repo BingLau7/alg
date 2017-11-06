@@ -19,4 +19,4 @@ class Solution:
         return result[::-1]
 
 if __name__ == '__main__':
-    print Solution().convertToTitle(52)
+    print(Solution().convertToTitle(52))

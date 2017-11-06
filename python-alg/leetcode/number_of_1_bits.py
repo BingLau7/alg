@@ -9,4 +9,4 @@ class Solution:
         return len([i for i in num if i != '0'])
 
 if __name__ == '__main__':
-    print Solution().hammingWeight(11)
+    print(Solution().hammingWeight(11))

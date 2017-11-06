@@ -41,4 +41,4 @@ if __name__ == '__main__':
 
     Solution().invertTree(root)
 
-    print root.left.val
+    print(root.left.val)

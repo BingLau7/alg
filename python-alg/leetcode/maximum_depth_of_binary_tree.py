@@ -38,4 +38,4 @@ if __name__ == '__main__':
     root.right = TreeNode(4)
     root.right.left = TreeNode(2)
     root.right.left.right = TreeNode(2)
-    print Solution().maxDepth(root)
+    print(Solution().maxDepth(root))

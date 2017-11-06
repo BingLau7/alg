@@ -12,4 +12,4 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    print Solution().addDigits(38)
+    print(Solution().addDigits(38))

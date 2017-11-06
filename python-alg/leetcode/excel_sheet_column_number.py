@@ -17,5 +17,5 @@ class Solution:
         return num
 
 if __name__ == '__main__':
-    print Solution().titleToNumber('AB')
+    print(Solution().titleToNumber('AB'))
 
