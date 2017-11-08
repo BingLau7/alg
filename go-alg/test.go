@@ -1,12 +1,12 @@
 package main
 
 import (
-	//"alg"
 	"fmt"
 	"alg"
 )
 
 func main() {
-	var nums = [] int{7, 3, 2}
-	fmt.Println(alg.CombinationSum(nums, 18))
+	var nums = [] int{10, 1, 2, 7, 6, 1, 5}
+	fmt.Println(alg.CombinationSum2(nums, 8))
+	//fmt.Println(utils.RemoveSliceInt(nums, len(nums)-1))
 }
