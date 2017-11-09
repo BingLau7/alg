@@ -10,3 +10,7 @@ func main() {
 	fmt.Println(alg.FirstMissingPositive(nums))
 	fmt.Println("---------------test--------------------")
 }
+
+func normalHash() {
+
+}
