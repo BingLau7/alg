@@ -1,6 +1,9 @@
 package alg
 
-import "fmt"
+import (
+	"fmt"
+	"utils"
+)
 
 /**
 https://leetcode.com/problems/summary-ranges/
@@ -40,4 +43,34 @@ func SummaryRanges(nums []int) []string {
 
 	}
 	return result
+}
+
+/**
+https://leetcode.com/problems/first-missing-positive/description/
+
+Given an unsorted integer array, find the first missing positive integer.
+
+For example,
+Given [1,2,0] return 3,
+and [3,4,-1,1] return 2.
+
+Your algorithm should run in O(n) time and uses constant space.
+ */
+
+ /**
+ 1. 先将各个正数移动到数组中对应的索引处（数字 - 1 的位置），负数和大于数组长度的不移地
+ 2. 再遍历一遍数组找出第一个负数或者大于数组长度的数
+  */
+func FirstMissingPositive(nums []int) int {
+	numsLen := len(nums)
+	if numsLen == 0 {
+		return 1
+	}
+	for i, num := range nums {
+		if num > 0 && num <= numsLen {
+			utils.SwapArrayNum(nums, i, num - 1)
+		}
+	}
+	fmt.Println(nums)
+	return 0
 }

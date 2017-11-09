@@ -1,12 +1,12 @@
 package main
 
 import (
-	//"alg"
 	"fmt"
 	"alg"
 )
 
 func main() {
-	var nums = [] int{7, 3, 2}
-	fmt.Println(alg.CombinationSum(nums, 18))
+	var nums = [] int{3, 4, -1, 1}
+	fmt.Println(alg.FirstMissingPositive(nums))
+	fmt.Println("---------------test--------------------")
 }
