@@ -1,16 +1,16 @@
 package main
 
 import (
+	"consistent_hashing"
 	"fmt"
-	"alg"
 )
 
 func main() {
-	var nums = [] int{3, 4, -1, 1}
-	fmt.Println(alg.FirstMissingPositive(nums))
-	fmt.Println("---------------test--------------------")
+	fmt.Println("------------Start-----------")
+	normalHash()
+	fmt.Println("------------End-----------")
 }
 
 func normalHash() {
-
+	consistent_hashing.TestNormal()
 }

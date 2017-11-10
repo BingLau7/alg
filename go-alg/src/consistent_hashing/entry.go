@@ -1,6 +1,8 @@
 package consistent_hashing
 
-import "hash/fnv"
+import (
+	"hash/fnv"
+)
 
 type Entry struct {
 	Key string
@@ -12,3 +14,6 @@ func (entry *Entry) hashCode() uint32 {
 	return h.Sum32()
 }
 
+func (entry *Entry) String() string {
+	return entry.Key
+}

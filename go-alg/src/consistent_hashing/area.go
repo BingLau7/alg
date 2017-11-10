@@ -12,3 +12,7 @@ func (area *Area) put(e Entry) {
 func (area *Area) get(e Entry) Entry {
 	return area.entries[e]
 }
+
+func InitArea(name string) Area {
+	return Area{name:name, entries:make(map[Entry]Entry)}
+}
