@@ -1,4 +1,4 @@
-package consistent_hashing
+package normal
 
 import (
 	"hash/fnv"

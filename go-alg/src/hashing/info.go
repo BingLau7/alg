@@ -1,11 +1,15 @@
-package consistent_hashing
+package hashing
 
-import "fmt"
+import (
+	"fmt"
+	"hashing/normal"
+)
 
 /**
 参考文章
 http://afghl.github.io/2016/07/04/consistent-hashing.html
 http://afghl.github.io/2016/11/19/implement-consistent-hashing.html
+http://royluo.org/2016/02/25/conhash/
  */
 
 /**
@@ -22,7 +26,7 @@ http://afghl.github.io/2016/11/19/implement-consistent-hashing.html
 
 func TestNormal() {
 	c := createCluster()
-	entries := []Entry{
+	entries := []normal.Entry{
 		{"i"},
 		{"have"},
 		{"a"},
@@ -38,22 +42,22 @@ func TestNormal() {
 		c.Put(e)
 	}
 
-	c.AddArea(InitArea("192.168.0.6"))
+	c.AddArea(normal.InitArea("192.168.0.6"))
 	findEntries(c, entries)
 }
 
-func createCluster() Cluster {
-	c := InitCluster()
-	c.AddArea(InitArea("192.168.0.0"))
-	c.AddArea(InitArea("192.168.0.1"))
-	c.AddArea(InitArea("192.168.0.2"))
-	c.AddArea(InitArea("192.168.0.3"))
-	c.AddArea(InitArea("192.168.0.4"))
-	c.AddArea(InitArea("192.168.0.5"))
+func createCluster() normal.Cluster {
+	c := normal.InitCluster()
+	c.AddArea(normal.InitArea("192.168.0.0"))
+	c.AddArea(normal.InitArea("192.168.0.1"))
+	c.AddArea(normal.InitArea("192.168.0.2"))
+	c.AddArea(normal.InitArea("192.168.0.3"))
+	c.AddArea(normal.InitArea("192.168.0.4"))
+	c.AddArea(normal.InitArea("192.168.0.5"))
 	return c
 }
 
-func findEntries(c Cluster, entries []Entry) {
+func findEntries(c normal.Cluster, entries []normal.Entry) {
 	for _, e := range entries {
 		if e == c.Get(e) {
 			fmt.Printf("重新找到 entry: %s\n", e)

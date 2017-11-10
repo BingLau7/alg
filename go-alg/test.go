@@ -1,7 +1,7 @@
 package main
 
 import (
-	"consistent_hashing"
+	"hashing"
 	"fmt"
 )
 
@@ -12,5 +12,5 @@ func main() {
 }
 
 func normalHash() {
-	consistent_hashing.TestNormal()
+	hashing.TestNormal()
 }

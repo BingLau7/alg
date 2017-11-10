@@ -1,4 +1,4 @@
-package consistent_hashing
+package normal
 
 
 const AREA_SIZE_MAX uint32 = 1024
