@@ -73,7 +73,7 @@ func combinationSum2(candidates []int, target int, cur []int, start int, result 
 			}
 			cur = append(cur, candidates[i])
 			combinationSum2(candidates, target - candidates[i], cur, i+1, result)
-			cur = utils.RemoveSliceInt(cur, len(cur)-1)
+			cur = utils.RemoveSliceIntIndex(cur, len(cur)-1)
 		}
 	}
 }

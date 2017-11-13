@@ -25,7 +25,7 @@ type ConHash struct {
 }
 
 
-func ConHashNew() *ConHash {
+func InitConHash() *ConHash {
 	return &ConHash {
 		hashFunc:     crc32.ChecksumIEEE,
 		hashRing:     HashRing{},

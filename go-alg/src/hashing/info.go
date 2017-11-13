@@ -1,7 +1,6 @@
 package hashing
 
 import (
-	"fmt"
 	"hashing/normal"
 )
 
@@ -25,44 +24,25 @@ http://royluo.org/2016/02/25/conhash/
  */
 
 func TestNormal() {
-	c := createCluster()
-	entries := []normal.Entry{
-		{"i"},
-		{"have"},
-		{"a"},
-		{"pen"},
-		{"an"},
-		{"apple"},
-		{"applepen"},
-		{"pineapple"},
-		{"pineapplepen"},
-		{"PPAP"}}
-
-	for _, e := range entries {
-		c.Put(e)
+	entries := []normal.Entry {
+		*normal.InitEntry("1"),
+		*normal.InitEntry("2"),
+		*normal.InitEntry("3"),
+		*normal.InitEntry("4"),
+		*normal.InitEntry("9"),
+		*normal.InitEntry("12"),
+		*normal.InitEntry("33"),
 	}
 
-	c.AddArea(normal.InitArea("192.168.0.6"))
-	findEntries(c, entries)
-}
+	h := normal.InitHash()
+	h.AddNode(*normal.InitNode("01"))
+	//h.AddNode(*normal.InitNode("02"))
+	//h.AddNode(*normal.InitNode("03"))
+	//h.AddNode(*normal.InitNode("04"))
 
-func createCluster() normal.Cluster {
-	c := normal.InitCluster()
-	c.AddArea(normal.InitArea("192.168.0.0"))
-	c.AddArea(normal.InitArea("192.168.0.1"))
-	c.AddArea(normal.InitArea("192.168.0.2"))
-	c.AddArea(normal.InitArea("192.168.0.3"))
-	c.AddArea(normal.InitArea("192.168.0.4"))
-	c.AddArea(normal.InitArea("192.168.0.5"))
-	return c
-}
-
-func findEntries(c normal.Cluster, entries []normal.Entry) {
 	for _, e := range entries {
-		if e == c.Get(e) {
-			fmt.Printf("重新找到 entry: %s\n", e)
-		} else {
-			fmt.Printf("entry 已失效: %s\n", e)
-		}
+		h.Put(e)
 	}
+
+	h.AddNode(*normal.InitNode("05"))
 }
