@@ -4,6 +4,7 @@
 """
 from random import randint
 
+
 def partition(nums, sub_p, super_r):
     """
         对nums[p..r]原址重排
@@ -16,6 +17,7 @@ def partition(nums, sub_p, super_r):
             nums[i], nums[j] = nums[j], nums[i]
     nums[i+1], nums[super_r] = nums[super_r], nums[i+1]
     return i+1
+
 
 def randomized_partition(nums, sub_p, super_r):
     """
