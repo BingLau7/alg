@@ -7,7 +7,8 @@ import (
 
 func main() {
 	fmt.Println("------------Start-----------")
-	normalHash()
+	//normalHash()
+	hashing.TestConHash()
 	//b := &B{name:"123"}
 	//test(b)
 	fmt.Println("------------End-----------")
