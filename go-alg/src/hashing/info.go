@@ -40,6 +40,12 @@ func TestConHash() {
 		ch.DataAdd(data)
 	}
 	ch.DebugPrint()
+	data := ch.DataLookup("test 5")
+	fmt.Println(data)
+	ch.DataRemove("test 5")
+	ch.DebugPrint()
+	ch.NodeRemove("test2")
+	ch.DebugPrint()
 }
 
 func TestNormal() {

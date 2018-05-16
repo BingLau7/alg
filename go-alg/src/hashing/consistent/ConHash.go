@@ -115,20 +115,28 @@ func (ch *ConHash) DebugPrint() {
 1. 将所有数据存入顺时针距离要删除节点最近的 Node
  */
 func (ch *ConHash) NodeRemove(nodeKey string) {
-
-}
-
-func (ch *ConHash) nodeLookup(data_hash_code uint32) *Node {
-	if ch.hash_ring.Len() == 0 {
-		fmt.Println("无节点")
-		return nil
-	}
-	for _, node := range ch.hash_ring {
-		if node.hash_code >= data_hash_code {
-			return node
+	for i, node := range ch.hash_ring {
+		if node.key != nodeKey {
+			continue
+		}
+		ch.hash_ring = append(ch.hash_ring[:i], ch.hash_ring[i+1:]...)
+		for _, v := range node.data {
+			ch.DataAdd(v)
 		}
 	}
-	return ch.hash_ring[0]
+}
+
+func (ch *ConHash) nodeLookup(data_hash_code uint32) (int, *Node) {
+	if ch.hash_ring.Len() == 0 {
+		fmt.Println("无节点")
+		return -1, nil
+	}
+	for i, node := range ch.hash_ring {
+		if node.hash_code >= data_hash_code {
+			return i, node
+		}
+	}
+	return 0, ch.hash_ring[0]
 }
 
 /**
@@ -139,7 +147,7 @@ func (ch *ConHash) nodeLookup(data_hash_code uint32) *Node {
  */
 func (ch *ConHash) DataAdd(data *Data) {
 	hash_code := ch.hash_func([]byte(data.key))
-	node := ch.nodeLookup(hash_code)
+	_, node := ch.nodeLookup(hash_code)
 	if node != nil {
 		node.data[data.key] = data
 	}
@@ -148,8 +156,14 @@ func (ch *ConHash) DataAdd(data *Data) {
 /**
 数据删除
  */
-func (r *Data) DataRemove(dataKey string) {
-
+func (ch *ConHash) DataRemove(dataKey string) {
+	hash_code := ch.hash_func([]byte(dataKey))
+	_, node := ch.nodeLookup(hash_code)
+	if node != nil {
+		if _, ok := node.data[dataKey]; ok {
+			delete(node.data, dataKey)
+		}
+	}
 }
 
 /**
@@ -158,6 +172,14 @@ func (r *Data) DataRemove(dataKey string) {
 2. 得到顺时针方向距离数据 hash 值最近的 map (环状)
 3. 获取 Node 中是否存在 data，存在返回
  */
-func (r *Data) DataLookup(dataKey string) {
-
+func (ch *ConHash) DataLookup(dataKey string) *Data {
+	hash_code := ch.hash_func([]byte(dataKey))
+	_, node := ch.nodeLookup(hash_code)
+	if node == nil {
+		return nil
+	}
+	if val, ok := node.data[dataKey]; ok {
+		return val
+	}
+	return nil
 }
