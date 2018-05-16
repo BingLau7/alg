@@ -2,17 +2,24 @@ package alg
 
 import "fmt"
 
-type Stack struct {
+type Stack interface {
+	Pop() interface{}
+	Push(interface{})
+	Size() int
+	Peek() interface{}
+}
+
+type SimpleStack struct {
 	data []interface{}
 }
 
-func StackNew() *Stack {
-	return &Stack{
+func StackNew() *SimpleStack {
+	return &SimpleStack{
 		data:make([]interface{}, 0),
 	}
 }
 
-func (s *Stack) Pop() interface{} {
+func (s *SimpleStack) Pop() interface{} {
 	size := s.Size()
 	if size == 0 {
 		return nil
@@ -22,15 +29,15 @@ func (s *Stack) Pop() interface{} {
 	return r
 }
 
-func (s *Stack) Push(data interface{}) {
+func (s *SimpleStack) Push(data interface{}) {
 	s.data = append(s.data, data)
 }
 
-func (s *Stack) Size() int {
+func (s *SimpleStack) Size() int {
 	return len(s.data)
 }
 
-func (s *Stack) Peek() interface{} {
+func (s *SimpleStack) Peek() interface{} {
 	size := s.Size()
 	if size == 0 {
 		return nil
@@ -38,8 +45,7 @@ func (s *Stack) Peek() interface{} {
 	return s.data[size - 1]
 }
 
-func TestStack() {
-	stack := StackNew()
+func TestStack(stack Stack) {
 	stack.Push(1)
 	stack.Push(3)
 	stack.Push(6)

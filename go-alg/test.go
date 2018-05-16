@@ -8,16 +8,8 @@ import (
 
 func main() {
 	fmt.Println("------------Start-----------")
-	//normalHash()
-	alg.TestStack()
-	//for i := 1; i < 20; i++{
-	//	code := crc32.ChecksumIEEE([]byte(fmt.Sprintf("test%d", i)))
-	//	if code > 1690090958 && code < 2326977762 {
-	//		fmt.Println(i)
-	//	}
-	//}
-	//b := &B{name:"123"}
-	//test(b)
+
+	alg.TestSimpleQueue([]int{1, 2, 3, 4, 5})
 	fmt.Println("------------End-----------")
 }
 
