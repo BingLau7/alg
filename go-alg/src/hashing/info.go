@@ -46,6 +46,9 @@ func TestConHash() {
 	ch.DebugPrint()
 	ch.NodeRemove("test2")
 	ch.DebugPrint()
+	node4 := consistent.NodeNew("test9")
+	ch.NodeAdd(node4)
+	ch.DebugPrint()
 }
 
 func TestNormal() {
