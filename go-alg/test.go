@@ -9,7 +9,7 @@ import (
 func main() {
 	fmt.Println("------------Start-----------")
 
-	alg.TestSimpleQueue([]int{1, 2, 3, 4, 5})
+	alg.TestQueue([]int{1, 2, 3, 4, 5})
 	fmt.Println("------------End-----------")
 }
 

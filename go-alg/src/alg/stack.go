@@ -6,6 +6,7 @@ type Stack interface {
 	Pop() interface{}
 	Push(interface{})
 	Size() int
+	Empty() bool
 	Peek() interface{}
 }
 
@@ -43,6 +44,10 @@ func (s *SimpleStack) Peek() interface{} {
 		return nil
 	}
 	return s.data[size - 1]
+}
+
+func (s *SimpleStack) Empty() bool {
+	return s.Size() <= 0
 }
 
 func TestStack(stack Stack) {

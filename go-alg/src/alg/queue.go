@@ -48,20 +48,22 @@ func (q *SimpleQueue) Size() int {
 	return len(q.data)
 }
 
-func TestSimpleQueue(arr []int) {
-	queue := SimpleQueueNew()
+func TestQueue(arr []int) {
+	queue := StackQueueNew()
 	for i := range arr {
 		queue.Push(i)
 	}
 	fmt.Println(queue.Front())
-	for range arr {
-		fmt.Printf("%d\n", queue.Pop())
+	fmt.Printf("pop %d\n", queue.Pop())
+	fmt.Println(queue.Front())
+	queue.Push(20)
+	for i := 0; i < 2; i++ {
+		fmt.Printf("pop %d\n", queue.Pop())
 	}
-}
-
-/**
-两个栈模拟队列操作
- */
-func StackMockQueue() {
-
+	fmt.Println(queue.Front())
+	queue.Push(20)
+	fmt.Printf("pop %d\n", queue.Pop())
+	fmt.Println(queue.Front())
+	queue.Push(20)
+	fmt.Println(queue.Front())
 }
