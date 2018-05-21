@@ -7,12 +7,15 @@ https://leetcode.com/problems/binary-tree-level-order-traversal/description/
  */
 func (tree *Tree) LevelOrder() [][]int {
 	result := make([][]int, 0)
+	if tree == nil {
+		return result
+	}
 	queue := SimpleQueueNew()
 	queue.Push(tree)
 	for !queue.Empty() {
 		r := make([]int, 0)
-		q_size := queue.Size()
-		for i := 0; i < q_size; i++ {
+		qSize := queue.Size()
+		for i := 0; i < qSize; i++ {
 			node := queue.Pop().(*Tree)
 			r = append(r, node.Value)
 			if node.Left != nil {
