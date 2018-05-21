@@ -26,6 +26,7 @@ func(sq *StackQueue) Pop() interface{} {
 	push_all_to_other(sq.s1, sq.s2)
 	return sq.s2.Pop()
 }
+
 func push_all_to_other(source Stack, target Stack) {
 	for !source.Empty() {
 		target.Push(source.Pop())
