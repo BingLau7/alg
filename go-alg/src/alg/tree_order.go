@@ -35,3 +35,51 @@ func TestLevelOrder() {
 	result := tree.LevelOrder()
 	fmt.Println(result)
 }
+
+/**
+https://leetcode.com/problems/binary-tree-preorder-traversal/description/
+递归
+这个由于使用了全局变量不能通过 leetcode
+ */
+var result = make([]int, 0)
+func (tree *Tree) PreOrderTraversalRecursion() []int {
+	if tree == nil {
+		return result
+	}
+	result = append(result, tree.Value)
+	tree.Left.PreOrderTraversalRecursion()
+	tree.Right.PreOrderTraversalRecursion()
+	return result
+}
+
+/**
+https://leetcode.com/problems/binary-tree-preorder-traversal/description/
+循环
+ */
+func (tree *Tree) PreOrderTraversalLoop() []int {
+	result := make([]int, 0)
+	stack := SimpleStackNew()
+	if tree == nil {
+		return result
+	}
+	stack.Push(tree)
+	for !stack.Empty() {
+		t := stack.Pop().(*Tree)
+		result = append(result, t.Value)
+		if t.Right != nil {
+			stack.Push(t.Right)
+		}
+		if t.Left != nil {
+			stack.Push(t.Left)
+		}
+	}
+	return result
+}
+
+func TestPreOrderTraversal() {
+	tree := TreeNewRandom(20)
+	levelResult := tree.LevelOrder()
+	result := tree.PreOrderTraversalLoop()
+	fmt.Println(levelResult)
+	fmt.Println(result)
+}

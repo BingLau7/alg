@@ -12,6 +12,10 @@ type Tree struct {
 	Size int
 }
 
+func TreeNewNil() *Tree {
+	return nil
+}
+
 func TreeNewDefault(k int) *Tree {
 	return &Tree{
 		Left: nil,

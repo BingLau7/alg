@@ -12,8 +12,8 @@ type StackQueue struct {
 
 func StackQueueNew() *StackQueue {
 	return &StackQueue{
-		s1: StackNew(),
-		s2: StackNew(),
+		s1: SimpleStackNew(),
+		s2: SimpleStackNew(),
 	}
 }
 

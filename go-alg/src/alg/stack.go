@@ -14,7 +14,7 @@ type SimpleStack struct {
 	data []interface{}
 }
 
-func StackNew() *SimpleStack {
+func SimpleStackNew() *SimpleStack {
 	return &SimpleStack{
 		data:make([]interface{}, 0),
 	}
