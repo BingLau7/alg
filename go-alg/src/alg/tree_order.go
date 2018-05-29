@@ -21,8 +21,7 @@ func (tree *Tree) LevelOrder() [][]int {
 			if node.Left != nil {
 				queue.Push(node.Left)
 			}
-			if node.Right != nil {
-				queue.Push(node.Right)
+			if node.Right != nil { queue.Push(node.Right)
 			}
 		}
 		result = append(result, r)
@@ -81,5 +80,29 @@ func TestPreOrderTraversal() {
 	levelResult := tree.LevelOrder()
 	result := tree.PreOrderTraversalLoop()
 	fmt.Println(levelResult)
+	fmt.Println(result)
+}
+
+func (tree *Tree) InOrderTraversalRecursion() []int {
+	if tree == nil {
+		return result
+	}
+	tree.Left.InOrderTraversalRecursion()
+	result = append(result, tree.Value)
+	tree.Right.InOrderTraversalRecursion()
+	return result
+}
+
+
+
+func (tree *Tree) InOrderTraversalLoop() []int {
+	return nil
+}
+
+func TestInOrderTraversal(){
+	tree := TreeNewRandom(8)
+	levelResult := tree.LevelOrder()
+	fmt.Println(levelResult)
+	tree.InOrderTraversalRecursion()
 	fmt.Println(result)
 }

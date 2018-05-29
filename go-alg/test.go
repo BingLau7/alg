@@ -7,6 +7,6 @@ import (
 
 func main() {
 	fmt.Println("------------Start-----------")
-	alg.TestPreOrderTraversal()
+	alg.TestInOrderTraversal()
 	fmt.Println("------------End-----------")
 }
