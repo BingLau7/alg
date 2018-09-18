@@ -85,18 +85,36 @@ func TestPreOrderTraversal() {
 
 func (tree *Tree) InOrderTraversalRecursion() []int {
 	if tree == nil {
-		return result
+		return nil
 	}
 	tree.Left.InOrderTraversalRecursion()
 	result = append(result, tree.Value)
 	tree.Right.InOrderTraversalRecursion()
-	return result
+	return nil // 结果为全局变量 result
 }
 
 
 
 func (tree *Tree) InOrderTraversalLoop() []int {
-	return nil
+	result := make([]int, 0)
+	if tree == nil {
+		return result
+	}
+	queue := SimpleQueueNew()
+	queue.Push(tree)
+	for !queue.Empty() {
+		t := queue.Pop().(*Tree)
+		if t.Left != nil {
+			queue.Push(t.Left)
+			queue.Push(t)
+		} else {
+			result = append(result, t.Value)
+		}
+		if t.Right != nil {
+			queue.Push(t.Right)
+		}
+	}
+	return result
 }
 
 func TestInOrderTraversal(){
@@ -105,4 +123,6 @@ func TestInOrderTraversal(){
 	fmt.Println(levelResult)
 	tree.InOrderTraversalRecursion()
 	fmt.Println(result)
+	r := tree.InOrderTraversalLoop()
+	fmt.Println(r)
 }

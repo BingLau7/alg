@@ -7,6 +7,7 @@ import (
 
 func main() {
 	fmt.Println("------------Start-----------")
-	alg.TestInOrderTraversal()
+	tree := alg.TreeNewAssign([]int{1, nil, 2, 3})
+	fmt.Println(tree)
 	fmt.Println("------------End-----------")
 }

@@ -24,6 +24,21 @@ func TreeNewDefault(k int) *Tree {
 	}
 }
 
+func TreeNewAssign(kArr []interface{}) *Tree {
+	q := SimpleQueueNew()
+	for _, k := range kArr {
+		q.Push(k)
+	}
+	for !q.Empty() {
+		t := q.Pop()
+		if t == nil {
+			continue
+		}
+		t = t.(*Tree)
+	}
+	return nil
+}
+
 func TreeNewRandom(k int) *Tree {
 	rand.Seed(int64(time.Now().Second()))
 	maxN := k * 30
