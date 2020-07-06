@@ -1,4 +1,4 @@
-package str
+package one_hundred
 
 import (
 	"fmt"

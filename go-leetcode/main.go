@@ -3,5 +3,5 @@ package main
 import "go-leetcode/str"
 
 func main() {
-	str.IsMatchRun()
+	one_hundred.IsMatchRun()
 }
