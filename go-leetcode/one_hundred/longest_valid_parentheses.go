@@ -2,6 +2,7 @@ package one_hundred
 
 import (
 	"fmt"
+	"go-leetcode/base"
 )
 
 // https://leetcode-cn.com/problems/longest-valid-parentheses/
@@ -37,7 +38,7 @@ func LongestValidParenthesesRun() {
 
 func longestValidParentheses(s string) int {
 	resArr := make([]int, len(s))
-	var stack Stack
+	var stack base.Stack
 	stack = []string{}
 	for i := 0; i < len(s); i++ {
 		r := string(s[i])
@@ -57,7 +58,7 @@ func longestValidParentheses(s string) int {
 	return res
 }
 
-func consume(stack *Stack, c string, resArr []int, i int) {
+func consume(stack *base.Stack, c string, resArr []int, i int) {
 	if stack.IsEmpty() {
 		stack.Push(c)
 		resArr[i] = 1

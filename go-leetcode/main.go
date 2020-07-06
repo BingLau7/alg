@@ -1,7 +1,7 @@
 package main
 
-import "go-leetcode/str"
+import "go-leetcode/two_hundred"
 
 func main() {
-	one_hundred.IsMatchRun()
+	two_hundred.HasPathSumRun()
 }
