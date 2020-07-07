@@ -1,7 +1,7 @@
 package main
 
-import "go-leetcode/two_hundred"
+import "go-leetcode/one_thousand_five_hundred"
 
 func main() {
-	two_hundred.HasPathSumRun()
+	one_thousand_five_hundred.MinDaysRun()
 }
