@@ -1,7 +1,7 @@
 package main
 
-import "go-leetcode/four_hundred"
+import "go-leetcode/one_hundred"
 
 func main() {
-	four_hundred.RunCountSmaller()
+	one_hundred.RunNumTrees()
 }
