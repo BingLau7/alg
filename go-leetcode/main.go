@@ -1,7 +1,7 @@
 package main
 
-import "go-leetcode/one_hundred"
+import "go-leetcode/two_hundred"
 
 func main() {
-	one_hundred.RunNumTrees()
+	two_hundred.RunFindPeakElement()
 }
