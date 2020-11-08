@@ -1,7 +1,7 @@
 package main
 
-import "go-leetcode/two_hundred"
+import "go-leetcode/one_hundred"
 
 func main() {
-	two_hundred.RunTowSum()
+	one_hundred.RunLengthOfLongestSubstring()
 }
